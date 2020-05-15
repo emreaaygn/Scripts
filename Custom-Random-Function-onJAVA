@@ -1,0 +1,55 @@
+/**
+* @author Emre Aygün emreaygn4@gmail.com
+* @26.04.2020
+* <p>
+* Verilen minimum ve maximum değer arasında sayı üreten fonksiyon
+* </p>
+**/
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Rastgele {
+    
+    public static long Rastgele(long minSayi, long maxSayi){
+        
+        
+        List<Long> KokSayiList = new ArrayList<>();
+        
+        String NanoStringYeni ;
+        String [] nanoDiziYeni ;
+        String RastgeleYeniSayi ;
+        KokSayiList.add(Long.parseLong("1"));
+        
+        for(int i=0; i<17; i++){
+            long nanoSaniyeYeni = System.nanoTime(); 
+            NanoStringYeni = Long.toString(nanoSaniyeYeni);
+            nanoDiziYeni = NanoStringYeni.split("");
+            RastgeleYeniSayi = nanoDiziYeni[10];
+            KokSayiList.add(Long.parseLong(RastgeleYeniSayi));
+        }
+        
+        int KokListeBoyut = KokSayiList.size();
+        String KokSayiString = "";
+        
+        for(int i=0; i<KokListeBoyut; i++){
+            long tempKokSayi = KokSayiList.get(i);
+            KokSayiString += Long.toString(tempKokSayi);
+        }
+        
+        long KokSayiLong = Long.parseLong(KokSayiString);
+        
+        long modSayisi = maxSayi-minSayi+1;
+
+        long Sayi = KokSayiLong%modSayisi;
+        
+        Sayi += minSayi;
+        
+        if(Sayi<0){
+            Sayi = Sayi*-1;
+        }
+        
+        return Sayi;
+    }
+    
+}
